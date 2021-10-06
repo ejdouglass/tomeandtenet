@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Store} from './context';
+import {HomeScreen} from './components/HomeScreen';
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Store>
+      <Router>
+        {/* Everything at this level is 'equal,' so all non-routes can kind of co-exist here as imported components */}
+        {/* e.g. an Alert component */}
+        <Route exact path='/' component={HomeScreen} />
+      </Router>
+    </Store>
+  )
 }
-
-export default App;
